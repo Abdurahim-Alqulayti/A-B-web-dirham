@@ -23,17 +23,16 @@
                 <p class="card-subtitle">Log in to continue tracking your expenses</p>
             </header>
 
-            <form class="login-form" action="signup.html" method="POST">
+            <form id="loginForm" class="login-Form" action="loginForm" method="POST">
                 <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
+                    <label for="username" class="form-label">Username</label>
                     <input
-                        type="email"
-                        id="email"
-                        name="email"
+                        type="text"
+                        id="username"
+                        name="username"
                         class="form-input"
-                        placeholder="Enter your email"
+                        placeholder="Enter your username"
                         required
-                        autocomplete="email"
                     >
                 </div>
 
@@ -46,7 +45,6 @@
                         class="form-input"
                         placeholder="Enter your password"
                         required
-                        autocomplete="current-password"
                     >
                 </div>
 

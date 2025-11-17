@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="../static/css/ui1.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome {{name}} to Your Personal Expenses Tracker</h2>
+
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+            <div class="card income">
+                <h3>Total Income</h3>
+                <div class="amount">${{income}}</div>
+            </div>
+            <div class="card expense">
+                <h3>Total Expense</h3>
+                <div class="amount">${{expense}}</div>
+            </div>
+            <div class="card balance">
+                <h3>Balance</h3>
+                <div class="amount">${{balance}}</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-container">
+            <!-- Income Bar Graph -->
+            <div class="chart-box">
+                <h4>Income Breakdown</h4>
+                <div class="bar-chart">
+                    {% for item in income_breakdown %}
+                    <div class="bar-item">
+                        <div class="bar-label">{{item[0]}}</div>
+                        <div class="bar-wrapper">
+                            <div class="bar-fill income" style="width: {{item[1]}}%">
+                                ${{item[2]}}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Expense Bar Graph -->
+            <div class="chart-box">
+                <h4>Expense Breakdown</h4>
+                <div class="bar-chart">
+                    {% for item in expense_breakdown %}
+                    <div class="bar-item">
+                        <div class="bar-label">{{item[0]}}</div>
+                        <div class="bar-wrapper">
+                            <div class="bar-fill expense" style="width: {{item[1]}}%">
+                                ${{item[2]}}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Transaction Button -->
+        <div class="add-transaction-section">
+            <a href="{{ url_for('transaction', user =user) }}" class="btn-add-transaction">Add Transaction</a>
+        </div>
+        <!-- History Table -->
+        <h4>Transaction History</h4>
+        <table>
+            <thead>
+               <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                   <th></th>
+               </tr>
+            </thead>
+            <tbody>
+                {% for raw in general %}
+                    <tr>
+                        <td>{{raw[0]}}</td>
+                        <td>{{raw[2]}}</td>
+                        <td>${{raw[3]}}</td>
+                        <td>{{raw[4]}}</td>
+                        <td><a href="details.html?id={{raw[0]}}" class="btn-details">More Details</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

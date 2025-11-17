@@ -1,4 +1,15 @@
-/* Removes default margin and padding from all elements */
+/* --- Global Variables (Identical to ui1.css & transaction.css) --- */
+:root {
+    --primary-color: #2c3e50;
+    --accent-blue: #3498db;
+    --bg-light: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-dark: #333;
+    --text-light: #7f8c8d;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Same shadow as transaction form */
+}
+
+/* --- Basic Setup --- */
 * {
     margin: 0;
     padding: 0;
@@ -7,119 +18,99 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
+    background-color: var(--bg-light); /* Consistent light gray background */
+    color: var(--text-dark);
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
 
+/* --- Main Container --- */
 .container {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 60px 50px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background-color: var(--card-bg);
+    padding: 50px 40px;
+    border-radius: 12px; /* Consistent corner radius */
+    box-shadow: var(--shadow);
     text-align: center;
-    max-width: 500px;
+    max-width: 450px;
     width: 100%;
-    animation: fadeIn 0.6s ease-in;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* --- Typography --- */
 h1 {
-    color: #2d3748;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    font-weight: 700;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 h3 {
-    color: #4a5568;
-    font-size: 1.2rem;
-    margin-bottom: 40px;
+    color: var(--text-light);
     font-weight: 400;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
 }
 
+/* --- Button Group --- */
 .button-group {
     display: flex;
+    flex-direction: column;
     gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
+/* Remove link styles */
+a {
+    text-decoration: none;
+    width: 100%;
+}
+
+/* --- Button Styling --- */
 button {
-    padding: 15px 40px;
-    font-size: 1.1rem;
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
     font-weight: 600;
-    border: none;
-    border-radius: 50px;
+    border-radius: 6px; /* Matches form inputs/buttons */
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    min-width: 140px;
+    font-family: inherit;
 }
 
-button:first-of-type {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* Sign Up Button - Primary Style (Matches "Add Transaction") */
+a[href*="signup"] button {
+    background-color: var(--accent-blue);
     color: white;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    border: 2px solid var(--accent-blue);
 }
 
-button:first-of-type:hover {
+a[href*="signup"] button:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
-button:last-of-type {
-    background: white;
-    color: #667eea;
-    border: 2px solid #667eea;
+/* Log In Button - Secondary Style (Outline style) */
+a[href*="login"] button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
 }
 
-button:last-of-type:hover {
-    background: #667eea;
+a[href*="login"] button:hover {
+    background-color: var(--primary-color);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
-button:active {
-    transform: translateY(0);
-}
-
-@media (max-width: 600px) {
+/* --- Mobile Responsiveness --- */
+@media (max-width: 480px) {
     .container {
-        padding: 40px 30px;
+        padding: 30px 20px;
     }
 
     h1 {
-        font-size: 2rem;
-    }
-
-    h3 {
-        font-size: 1rem;
-    }
-
-    button {
-        padding: 12px 30px;
-        font-size: 1rem;
-        min-width: 120px;
+        font-size: 1.8rem;
     }
 }

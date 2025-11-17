@@ -1,352 +1,201 @@
-/* ===========================
-   LOGIN PAGE STYLES
-   =========================== */
-
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* --- Global Variables (Consistent with previous files) --- */
+:root {
+    --primary-color: #2c3e50;
+    --accent-blue: #3498db;
+    --bg-light: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-dark: #333;
+    --text-light: #7f8c8d;
+    --border-color: #ddd;
+    --danger-red: #e74c3c;  /* For error messages */
+    --success-green: #2ecc71; /* For success messages */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-html {
-    font-size: 16px;
+/* --- Basic Setup --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    /* Center everything vertically and horizontally */
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    line-height: 1.6;
 }
 
-/* Main Container */
-.main-container {
-    width: 100%;
-    max-width: 480px;
-    animation: fadeInUp 0.6s ease-out;
-}
-
-/* Card Component */
-.card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 24px;
-    padding: 50px 40px;
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
-}
-
-/* Card Header */
-.card-header {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.card-title {
-    color: #2d3748;
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
-}
-
-.card-subtitle {
-    color: #718096;
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-/* Login Form */
-.login-form {
-    margin-bottom: 25px;
-}
-
-/* Form Group */
-.form-group {
-    margin-bottom: 24px;
-}
-
-.form-label {
-    display: block;
-    color: #4a5568;
-    font-weight: 600;
-    margin-bottom: 8px;
-    font-size: 0.95rem;
-}
-
-.form-input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-    outline: none;
-    background: white;
-}
-
-.form-input::placeholder {
-    color: #a0aec0;
-}
-
-.form-input:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-}
-
-.form-input:hover {
-    border-color: #cbd5e0;
-}
-
-/* Form Options */
-.form-options {
-    text-align: right;
-    margin-top: -10px;
-    margin-bottom: 28px;
-}
-
-.forgot-link {
-    color: #667eea;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.forgot-link:hover {
-    color: #764ba2;
-    text-decoration: underline;
-}
-
-.forgot-link:focus {
-    outline: 2px solid #667eea;
-    outline-offset: 2px;
-    border-radius: 4px;
-}
-
-/* Button Styles */
-.btn {
-    width: 100%;
-    padding: 16px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: inherit;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-}
-
-.btn-primary:active {
-    transform: translateY(0);
-}
-
-.btn-primary:focus {
-    outline: 3px solid #667eea;
-    outline-offset: 3px;
-}
-
-/* Divider */
-.divider {
-    text-align: center;
-    margin: 30px 0;
-    position: relative;
-}
-
-.divider::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: #e2e8f0;
-}
-
-.divider-text {
-    position: relative;
-    display: inline-block;
-    padding: 0 16px;
-    background: rgba(255, 255, 255, 0.95);
-    color: #a0aec0;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-/* Card Footer */
-.card-footer {
-    text-align: center;
-}
-
-.footer-text {
-    color: #4a5568;
-    font-size: 0.95rem;
-}
-
-.footer-link {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.footer-link:hover {
-    color: #764ba2;
-    text-decoration: underline;
-}
-
-.footer-link:focus {
-    outline: 2px solid #667eea;
-    outline-offset: 2px;
-    border-radius: 4px;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .card {
-        padding: 45px 35px;
-    }
-
-    .card-title {
-        font-size: 2rem;
-    }
-
-    .card-subtitle {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding: 15px;
-    }
-
-    .card {
-        padding: 40px 30px;
-    }
-
-    .card-title {
-        font-size: 1.85rem;
-    }
-
-    .card-subtitle {
-        font-size: 0.9rem;
-    }
-
-    .form-input {
-        padding: 12px 14px;
-        font-size: 0.95rem;
-    }
-
-    .btn {
-        padding: 14px;
-        font-size: 1rem;
-    }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Focus visible (modern browsers) */
-.btn:focus:not(:focus-visible) {
-    outline: none;
-}
-
-.forgot-link:focus:not(:focus-visible),
-.footer-link:focus:not(:focus-visible) {
-    outline: none;
-}
-
-/* Form validation states */
-.form-input:invalid:not(:placeholder-shown) {
-    border-color: #fc8181;
-}
-
-.form-input:valid:not(:placeholder-shown) {
-    border-color: #68d391;
-}
+/* --- Flash Messages (Alerts) --- */
+/* Styling for the Python/Flask flash messages */
 .alert {
+    width: 100%;
+    max-width: 450px; /* Match card width */
     padding: 15px;
-    font-size: 14px;
+    margin-bottom: 20px;
+    border-radius: 6px;
     text-align: center;
-    animation: slideDown 0.3s ease-out;
-    position: fixed; /* Fixed position at top of page */
-    top: 0; /* Stick to top */
-    left: 0; /* Start from left edge */
-    right: 0; /* Extend to right edge */
-    width: 100%; /* Full width */
-    z-index: 1000; /* Appear above everything */
-    margin: 0; /* Remove margins */
-    border-radius: 0; /* No rounded corners for full-width alert */
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
+/* Error Alert (Red) */
+.alert-error, .alert-danger {
+    background-color: #fadbd8;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Success Alert (Green) */
 .alert-success {
     background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
 }
 
-.alert-error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+/* --- Main Container --- */
+.main-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
-/* Print Styles */
-@media print {
-    body {
-        background: white;
-    }
 
+/* --- Login Card --- */
+.card {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+/* --- Header Section --- */
+.card-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-subtitle {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* --- Form Styling --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fafafa; /* Slight contrast like transaction form */
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* --- Button --- */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* --- Divider (The "OR" line) --- */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.divider-text {
+    padding: 0 10px;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* --- Footer --- */
+.card-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.footer-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 480px) {
     .card {
-        box-shadow: none;
-        border: 1px solid #e2e8f0;
+        padding: 30px 20px;
+        box-shadow: none; /* Flatter look on small screens */
     }
 
-    .btn {
-        display: none;
+    body {
+        padding: 10px;
+        background-color: var(--card-bg); /* White bg on mobile looks cleaner */
+    }
+
+    .alert {
+        max-width: 100%;
     }
 }
